@@ -1,21 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StateContext, createDefaultContext } from './appContext';
+import { Settings } from './components/Settings';
+import { RootStackParamList } from './types/components';
+import { GlobalContext } from './appContext';
+import { useState } from 'react';
+import { Home } from './components/Home';
+
+const Root = createStackNavigator<RootStackParamList>();
 
 export default function App() {
+  const context = useState<GlobalContext>(createDefaultContext());
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="dark" />
-    </View>
+    <StateContext.Provider value={context}>
+      <NavigationContainer>
+        <Root.Navigator>
+          <Root.Screen name="Home" component={Home} />
+          <Root.Screen name="Settings" component={Settings} />
+        </Root.Navigator>
+      </NavigationContainer>
+    </StateContext.Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#efefef',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
