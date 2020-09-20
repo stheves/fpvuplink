@@ -1,0 +1,12 @@
+{
+  "name": "fpvuplink",
+  "displayName": "fpvuplink",
+  "expo": {
+    "name": "fpvuplink",
+    "slug": "fpvuplink",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
