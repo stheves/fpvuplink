@@ -6,3 +6,5 @@ export type RootStackParamList = {
 };
 
 export type Props = StackScreenProps<RootStackParamList, 'Home'>;
+
+export type UdpAddress = { host?: string; port: number };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text, View } from 'react-native';
-import { Props } from '../types/components';
+import { Props } from '../types/types';
 import { styles } from '../styles';
 
 export const Home = ({ navigation, route }: Props) => (
