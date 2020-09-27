@@ -1,33 +1,25 @@
-import {
-  createCoreActions,
-  createDefaultState,
-  createListener,
-  GlobalContext,
-} from './appContext';
+import { AppContext, createContext, createListener } from './appContext';
+import { createDefaultState } from './createDefaultState';
 
-export interface MavLinkOptions {
+export interface AppOptions {
   udpPort: number;
 }
 
-export interface AppOptions {
-  mavlink: MavLinkOptions;
-}
-
-export interface AppInstance {
-  context: GlobalContext;
-  options?: AppOptions;
+export interface AppInstanceType {
+  context: AppContext;
+  options: AppOptions;
   decode(msg: Buffer): string;
 }
 
-export function createInstance(): AppInstance {
+export function createInstance(
+  options: AppOptions = { udpPort: 8888 }
+): AppInstanceType {
   const { decode } = new TextDecoder('utf-8');
-
-  const appOptions = { mavlink: { udpPort: 8888 } };
 
   const state = createDefaultState();
   const listener = createListener();
-  const context = createCoreActions(state, listener);
+  const context = createContext(state, listener);
 
-  const instance = { context, options: appOptions, decode };
-  return instance as AppInstance;
+  const instance = { context, options, decode };
+  return instance as AppInstanceType;
 }

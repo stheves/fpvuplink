@@ -1,11 +1,5 @@
-import { createContext } from 'react';
 import * as actions from './actions';
-
-interface Extendable {}
-
-export interface GlobalState extends Extendable {
-  connecting: boolean;
-}
+import { GlobalState } from './createDefaultState';
 
 export interface EventEmitter {
   on(type: string, cb: (...args: any[]) => void): void;
@@ -13,13 +7,7 @@ export interface EventEmitter {
   emit(type: string, msg: string): void;
 }
 
-export type GlobalContext = Partial<EventEmitter & GlobalState> | undefined;
-
-export const createDefaultState = (): GlobalState => {
-  return {
-    connecting: false,
-  } as GlobalState;
-};
+export type AppContext = Partial<EventEmitter & GlobalState> | undefined;
 
 export const createListener = (): EventEmitter => {
   return {
@@ -29,15 +17,12 @@ export const createListener = (): EventEmitter => {
   } as EventEmitter;
 };
 
-export const createCoreActions = (
+export const createContext = (
   state: GlobalState,
   events: EventEmitter
-): GlobalContext => {
-  return {
+): AppContext =>
+  ({
     state,
     ...events,
     ...actions,
-  } as GlobalContext;
-};
-
-export const StateContext = createContext<GlobalContext>(undefined);
+  } as AppContext);
