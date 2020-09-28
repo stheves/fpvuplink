@@ -1,5 +1,6 @@
 import { AppContext, createContext, createListener } from './appContext';
 import { createDefaultState } from './createDefaultState';
+import { TextDecoder } from 'text-encoding';
 
 export interface AppOptions {
   udpPort: number;

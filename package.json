@@ -5,7 +5,8 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest --watchAll",
+    "clean-install": "rm -rf node_modules && yarn cache clean --force && watchman watch-del-all && rm -rf /tmp/metro-* && yarn"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
@@ -26,13 +27,15 @@
     "react-native-udp": "^4.0.2",
     "react-native-unimodules": "~0.10.0",
     "react-native-vector-icons": "^7.1.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "text-encoding": "^0.7.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "@types/react": "~16.9.23",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.61.23",
+    "@types/text-encoding": "0.0.35",
     "babel-preset-expo": "~8.2.0",
     "jest-expo": "~38.0.0",
     "typescript": "~3.9.5"
