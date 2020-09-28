@@ -1,15 +1,15 @@
 import React from 'react';
-import { Header } from 'react-native-elements';
-import { Props } from '../types/types';
+import { View } from 'react-native';
+import { Header, Icon, ListItem } from 'react-native-elements';
 
-export const Home = ({ navigation, route }: Props) => (
-  <Header
-    leftComponent={{ icon: 'menu', color: '#fff' }}
-    centerComponent={{ text: 'FPV Uplink', style: { color: '#fff' } }}
-    rightComponent={{ icon: 'home', color: '#fff' }}
-    containerStyle={{
-      backgroundColor: '#3D6DCC',
-      justifyContent: 'space-around',
-    }}
-  />
+export const Home = () => (
+  <View>
+    <Header centerComponent={{ text: 'FPV Uplink' }} />
+    <ListItem bottomDivider>
+      <Icon name={'cog'} />
+      <ListItem.Content>
+        <ListItem.Title>Settings</ListItem.Title>
+      </ListItem.Content>
+    </ListItem>
+  </View>
 );

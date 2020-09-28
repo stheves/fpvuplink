@@ -1,9 +1,17 @@
-import { AppContext, createContext, createListener } from './appContext';
-import { createDefaultState } from './createDefaultState';
 import { TextDecoder } from 'text-encoding';
+import { AppContext, createContext, createListener } from './appContext';
+import { defaultOptions } from './createDefaultAppOptions';
+import { createDefaultState } from './createDefaultState';
 
+enum COLOR_SCHEMES {
+  DARK = 'dark',
+}
+export interface ThemeOptions {
+  colorScheme?: COLOR_SCHEMES;
+}
 export interface AppOptions {
   udpPort: number;
+  theme?: ThemeOptions;
 }
 
 export interface AppInstanceType {
@@ -13,7 +21,7 @@ export interface AppInstanceType {
 }
 
 export function createInstance(
-  options: AppOptions = { udpPort: 8888 }
+  options: AppOptions = defaultOptions
 ): AppInstanceType {
   const { decode } = new TextDecoder('utf-8');
 
