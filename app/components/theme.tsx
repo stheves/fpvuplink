@@ -1,19 +1,19 @@
 import { Theme } from 'react-native-elements';
 
 export const theme = {
+  dark: true,
   colors: {
-    primary: '#d65a31',
-    secondary: '#393e46',
-    black: '#eeeeee',
-    white: '#222831',
-    greyOutline: '#222831',
+    primary: '#f6f4e6',
+    secondary: '#fddb3a',
+    black: '#52575d',
+    white: '#41444b',
   },
   Icon: {
     type: 'font-awesome-5',
   },
-  ListItem: {
-    containerStyle: {
-      backgroundColor: '#393e46',
+  TabNavigator: {
+    tabBarOptions: {
+      activeBackgroundColor: '#000',
     },
   },
 } as Theme;

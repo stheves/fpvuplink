@@ -1,9 +1,11 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { ThemeProvider } from 'react-native-elements';
+import { View } from 'react-native';
+import { Header, ThemeProvider } from 'react-native-elements';
 import { connect } from '../core/udp';
 import { createInstance } from '../createInstance';
 import { StateContext } from '../stateContext';
-import { Home } from './Home';
+import { AppNavigation } from './AppNavigation';
 import { theme } from './theme';
 
 export function AppInstance({ instance = createInstance(), children = [] }) {
@@ -15,11 +17,13 @@ export function AppInstance({ instance = createInstance(), children = [] }) {
   }, []);
   return (
     <StateContext.Provider value={instance.context}>
-      <ThemeProvider
-        theme={theme}
-        // useDark={options.theme?.colorScheme === 'dark'}
-      >
-        <Home />
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <View style={{ flex: 1 }}>
+            <Header centerComponent={{ text: 'FPV Uplink' }} />
+            <AppNavigation />
+          </View>
+        </NavigationContainer>
       </ThemeProvider>
     </StateContext.Provider>
   );
